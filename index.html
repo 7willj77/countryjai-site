@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Country Jai | Official Site</title>
+  <meta name="description" content="Official website for Country Jai – modern country music with a UK twist. Listen to Still Dreaming and more on Spotify, and follow @countryjai.music on Instagram." />
+
+  <!-- FONTS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!-- Rye = western style, Poppins = clean body text -->
+  <link href="https://fonts.googleapis.com/css2?family=Rye&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- BASIC STYLING -->
+  <style>
+    :root {
+      --bg: #050308;
+      --bg-alt: #0c0914;
+      --accent: #ffb347;      /* warm, country gold */
+      --accent-soft: rgba(255, 179, 71, 0.15);
+      --accent-strong: #ff9b2f;
+      --text: #f5f5f5;
+      --muted: #c3c3c3;
+      --border: rgba(255, 255, 255, 0.06);
+      --card-bg: rgba(16, 11, 30, 0.95);
+      --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.55);
+      --radius-xl: 24px;
+      --radius-lg: 18px;
+      --radius-pill: 999px;
+      --max-width: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #25132b 0, #050308 45%, #020106 100%);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* HEADER */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(22px);
+      background: linear-gradient(
+        to bottom,
+        rgba(5, 3, 8, 0.96),
+        rgba(5, 3, 8, 0.88),
+        rgba(5, 3, 8, 0.6)
+      );
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.9rem 0;
+      gap: 1.5rem;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+    }
+
+    .logo-mark {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 20%, #ffe2b4, #ffb347 40%, #b76218 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #2b1504;
+      font-weight: 700;
+      font-size: 1.2rem;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7);
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+    }
+
+    .brand-main {
+      font-family: "Rye", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 1.6rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .brand-tagline {
+      font-size: 0.75rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.21em;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      position: relative;
+      padding-bottom: 0.1rem;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -0.25rem;
+      width: 0;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-strong));
+      transition: width 0.18s ease-out;
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a:focus-visible::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .pill {
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      background: radial-gradient(circle at top left, rgba(255, 179, 71, 0.07), rgba(10, 6, 18, 0.85));
+      padding: 0.45rem 0.9rem;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      color: var(--muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .pill-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 0 6px rgba(255, 179, 71, 0.18);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      padding: 0.55rem 1.3rem;
+      border-radius: var(--radius-pill);
+      border: 1px solid transparent;
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+      color: #2b1504;
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.65);
+      transition: transform 0.12s ease-out, box-shadow 0.12s ease-out, filter 0.12s ease-out;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.05);
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.8);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--muted);
+      border-color: var(--border);
+      box-shadow: none;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.04);
+      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.55);
+    }
+
+    .btn-icon {
+      font-size: 1.1rem;
+      line-height: 0;
+    }
+
+    /* HERO */
+
+    .hero {
+      padding: 3.5rem 0 3rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      gap: 2.8rem;
+      align-items: center;
+    }
+
+    .eyebrow {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.28em;
+      color: var(--accent);
+      margin-bottom: 0.7rem;
+    }
+
+    .hero-title {
+      font-family: "Rye", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: clamp(2.4rem, 4vw, 3rem);
+      line-height: 1.08;
+      margin: 0 0 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .hero-title span {
+      background: linear-gradient(120deg, #ffe2b4, var(--accent-strong));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-text {
+      font-size: 0.99rem;
+      color: var(--muted);
+      max-width: 32rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .hero-cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.4rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .hero-meta span {
+      opacity: 0.8;
+    }
+
+    .hero-meta strong {
+      color: #fdf3dd;
+      font-weight: 500;
+    }
+
+    .hero-artwork {
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      box-shadow: var(--shadow-soft);
+      position: relative;
+    }
+
+    .hero-artwork img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .hero-artwork-badge {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      background: rgba(5, 3, 8, 0.85);
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      padding: 0.3rem 0.85rem;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      color: var(--accent);
+    }
+
+    .hero-artwork-caption {
+      position: absolute;
+      bottom: 1rem;
+      left: 1.1rem;
+      right: 1.1rem;
+      background: linear-gradient(
+        to top,
+        rgba(5, 3, 8, 0.9),
+        rgba(5, 3, 8, 0.0)
+      );
+      padding-top: 3rem;
+      padding-bottom: 0.5rem;
+      font-size: 0.9rem;
+    }
+
+    .artwork-title {
+      font-family: "Rye", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 1.2rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .artwork-tagline {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    /* SECTIONS */
+
+    section {
+      padding: 2.4rem 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.04);
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 1.4rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .section-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .section-description {
+      font-size: 0.92rem;
+      color: var(--muted);
+      max-width: 30rem;
+    }
+
+    .section-pill {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--muted);
+    }
+
+    /* ABOUT */
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .about-text {
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .about-highlight {
+      font-weight: 500;
+      color: #fdf3dd;
+    }
+
+    .about-keyline {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.3rem;
+      margin-top: 1.4rem;
+      font-size: 0.85rem;
+    }
+
+    .about-keyline span {
+      color: var(--muted);
+    }
+
+    .about-card {
+      background: var(--bg-alt);
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border);
+      padding: 1.3rem 1.2rem;
+      box-shadow: var(--shadow-soft);
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+
+    .about-card h3 {
+      margin: 0 0 0.5rem;
+      font-size: 0.95rem;
+      color: #fdf3dd;
+    }
+
+    .about-stat-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 0.9rem;
+      font-size: 0.82rem;
+    }
+
+    .about-stat {
+      padding: 0.4rem 0.7rem;
+      border-radius: var(--radius-pill);
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px dashed rgba(255, 255, 255, 0.16);
+    }
+
+    /* MUSIC & SOCIAL */
+
+    .two-column {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      gap: 1.8rem;
+      align-items: start;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border);
+      padding: 1.4rem 1.3rem;
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card-title {
+      font-size: 1rem;
+      font-weight: 500;
+      margin-bottom: 0.3rem;
+    }
+
+    .card-subtitle {
+      font-size: 0.84rem;
+      color: var(--muted);
+      margin-bottom: 0.9rem;
+    }
+
+    .spotify-embed {
+      margin-top: 0.6rem;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: #000;
+      min-height: 232px;
+    }
+
+    .spotify-embed iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .social-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+    }
+
+    .social-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .social-platform {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+
+    .badge-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 10px;
+      background: radial-gradient(circle at 30% 0%, #ffd976, #ff3473 40%, #5b4bff 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+    }
+
+    .badge-label-main {
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .badge-label-sub {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .insta-grid-wrapper {
+      margin-top: 1rem;
+      border-radius: var(--radius-lg);
+      border: 1px dashed rgba(255, 255, 255, 0.2);
+      padding: 0.9rem;
+      background: rgba(0, 0, 0, 0.4);
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .insta-grid-placeholder {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.35rem;
+      margin-top: 0.6rem;
+    }
+
+    .insta-grid-placeholder div {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 8px;
+      aspect-ratio: 1 / 1;
+    }
+
+    /* CONTACT */
+
+    .contact-card {
+      max-width: 620px;
+      margin: 0 auto;
+      background: var(--card-bg);
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border);
+      padding: 1.5rem 1.4rem;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 0.8rem;
+      font-size: 0.9rem;
+    }
+
+    .contact-field {
+      flex: 1 1 220px;
+      min-width: 0;
+    }
+
+    .field-label {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+      margin-bottom: 0.2rem;
+    }
+
+    .field-value {
+      font-size: 0.92rem;
+      color: #fdf3dd;
+      word-break: break-word;
+    }
+
+    /* FOOTER */
+
+    footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 1.6rem 0 2rem;
+      margin-top: 1.5rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: var(--muted);
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .about-grid,
+      .two-column {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero {
+        padding-top: 2.6rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.9rem;
+      }
+
+      .nav-links {
+        display: none; /* simple: no mobile menu */
+      }
+
+      .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .brand-main {
+        font-size: 1.4rem;
+      }
+
+      .hero-title {
+        font-size: 2.1rem;
+      }
+
+      .hero-cta-row {
+        flex-direction: column;
+        align-items: stretch;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <header>
+    <div class="container">
+      <nav class="nav">
+        <div class="nav-left">
+          <div class="logo-mark"></div>
+          <div class="brand-text">
+            <div class="brand-main">Country Jai</div>
+            <div class="brand-tagline">UK Country Artist</div>
+          </div>
+        </div>
+
+        <div class="nav-links" aria-label="Primary navigation">
+          <a href="#home">Home</a>
+          <a href="#music">Music</a>
+          <a href="#story">Story</a>
+          <a href="#contact">Contact</a>
+        </div>
+
+        <div class="nav-cta">
+          <div class="pill">
+            <span class="pill-dot"></span>
+            <span>Out now * Could this be... </span>
+          </div>
+          <a class="btn btn-secondary" href="#music">
+            <span class="btn-icon">▶</span>
+            <span>Listen now</span>
+          </a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <main id="home">
+    <section class="hero">
+      <div class="container">
+        <div class="hero-grid">
+          <div>
+<h1 class="hero-title">
+  <span>Still Dreaming</span><br />
+  the latest single by Country Jai.
+</h1>
+            <p class="hero-text">
+              Country Jai brings a modern country sound with a UK heartbeat – storytelling, big hooks, and
+              the kind of chorus you can’t help but sing back. Hit play, turn it up, and stay still dreaming.
+              Utilising the power of AI Technology alongside Songwriting and James' Musical Talents, Country Jai creates something new of very exciting! 
+            </p>
+
+            <div class="hero-cta-row">
+<a class="btn" 
+   href="https://open.spotify.com/track/3tmeDPVE05LTjTnUbIz33w?si=0d18e53767ad4b33" 
+   target="_blank" 
+   rel="noopener">
+  <span class="btn-icon">🎧</span>
+  <span>Listen Now</span>
+</a>
+              <a class="btn btn-secondary" href="https://instagram.com/countryjai.music" target="_blank" rel="noopener">
+                <span class="btn-icon">📸</span>
+                <span>Follow on Instagram</span>
+              </a>
+            </div>
+
+            <div class="hero-meta">
+              <span><strong>Streaming Now</strong> On all good streaming services</span>
+            </div>
+          </div>
+          <div class="hero-artwork" aria-label="Still Dreaming single artwork">
+            <!-- Make sure still-dreaming-cover.jpg is uploaded to the repo root -->
+<img src="could-this-be-cover.jpg" alt="Country Jai - Could This Be artwork">
+            <div class="hero-artwork-badge">OUT NOW</div>
+            <div class="hero-artwork-caption">
+              <div class="artwork-title">Count this be...</div>
+              <div class="artwork-tagline">The latest single by Country Jai </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STORY / ABOUT -->
+    <section id="story">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <div class="section-title">The story so far</div>
+            <div class="section-pill">Country Jai · Artist profile</div>
+          </div>
+          <p class="section-description">
+          </p>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-text">
+            <p>
+              Country Jai weaves real stories into modern country tracks – the kind you belt out on a long
+              drive or keep on repeat when you need a lift. Blending classic influences with a chart-ready
+              sound, the music draws on family, friends and the highs and lows of life in the UK.
+            </p>
+            <p>
+              Country Jai burst onto the scene in early 2025 with his debut single STOP! This recieved widespread acclaim from Music crittics in the UK and afar! 
+              Going on to hit 100,000 Streams in just the first 3 months and momentum well and truely on his side Jai released his first album 'LITTLE BIT DIFFERENT' featuring fan favourites 'One Time Hit!' and 'Play to Win'
+            <p>
+              Jai cemented his place on the UK Country Scene releasing his cover of 'PINK PONY CLUB' which has been streamed worldwide. 
+            <p>
+              November 2025 saw Country Jai release 'THE SILLY, NAUGHTY ELF' raising funds for The Saints Foundation, this single went on to be used in hundreds of reels on social media racking up more than 4 MILLION views on Instagram alone!  
+            
+              
+              From heartfelt ballads to crowd-ready anthems, every song is built around one idea:
+              <span class="about-highlight">if it matters to real people, it belongs in a song</span>.
+            </p>
+
+            <div class="about-keyline">
+              <span>🎙 Independent UK artist</span>
+              <span>📲 Active on Spotify & Instagram</span>
+            </div>
+          </div>
+
+          <aside class="about-card">
+            <h3>Country Jai at a glance</h3>
+            <p>
+              A growing digital audience and strong online engagement make Country Jai a compelling
+              presence for fans of modern country and beyond.
+            </p>
+            <div class="about-stat-row">
+              <div class="about-stat">🎧 Streaming on major platforms</div>
+              <div class="about-stat">📱 Behind-the-scenes on Instagram</div>
+              <div class="about-stat">🤝 Community & charity-minded</div>
+  
+             Please consider donating to the ongoing work of The Saints Foundation using the link below 
+
+              
+            </div>
+            <form action="https://www.paypal.com/donate" method="post" target="_top">
+<input type="hidden" name="business" value="WCLDBJW97Z8C8" />
+<input type="hidden" name="no_recurring" value="0" />
+<input type="hidden" name="item_name" value="Please consider donating here to the work of The Saints Foundation" />
+<input type="hidden" name="currency_code" value="GBP" />
+<input type="image" src="https://www.paypalobjects.com/en_US/GB/i/btn/btn_donateCC_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
+<img alt="" border="0" src="https://www.paypal.com/en_GB/i/scr/pixel.gif" width="1" height="1" />
+</form>
+
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- MUSIC & SOCIAL -->
+    <section id="music">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <div class="section-title">Listen & connect</div>
+            <div class="section-pill">Spotify · Instagram</div>
+          </div>
+                  </p>
+        </div>
+        <div class="two-column">
+          <!-- MUSIC CARD -->
+          <div class="card">
+            <div class="card-title">Country Jai on Spotify</div>
+            <div class="card-subtitle">
+              Listen to Could this be... and the full catalogue, 
+              add tracks to your playlists, and follow to stay 
+              updated on new releases.
+            </div>
+          <div class="spotify-embed">
+  <iframe 
+    style="border-radius:12px"
+ src="https://open.spotify.com/embed/track/3tmeDPVE05LTjTnUbIz33w"
+    width="100%"
+    height="380"
+    frameborder="0"
+    allowfullscreen=""
+    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+    loading="lazy">
+  </iframe>
+</div>
+            </div>
+          </div>
+
+          <!-- SOCIAL CARD -->
+          <div class="card">
+            <div class="card-title">Instagram · @countryjai.music</div>
+            <div class="card-subtitle">
+              Follow for the latest updates, live moments, 
+              studio clips and everything happening around
+              Country Jai.
+            </div>
+
+            <div class="social-links">
+              <div class="social-row">
+                <div class="social-platform">
+                  <div class="badge-icon">📸</div>
+                  <div>
+                    <div class="badge-label-main">@countryjai.music</div>
+                  </div>
+                </div>
+                <a class="btn btn-secondary" href="https://instagram.com/countryjai.music" target="_blank" rel="noopener">
+                  <span>View profile</span>
+                </a>
+              </div>
+
+              <div class="insta-grid-wrapper">
+                <strong>Instagram grid</strong><br />
+                  <div class="igwrapper"><style>.igwrapper{background:#fff;position:relative}.igwrapper iframe{border:0;position:relative;z-index:2}.igwrapper a{color:rgba(0,0,0,0);position:absolute;left:0;top:0;z-index:0}</style><a href="https://wwmgame.com">wwm game</a><script async src="https://www.instagram.com/embed.js"></script><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/CountryJai.music" data-instgrm-version="14" style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:658px; min-width:326px; padding:0; width:99.375%;width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"></blockquote></div>
+                  <div></div><div></div><div></div>
+                  <div></div><div></div><div></div>
+                  <div></div><div></div><div></div>
+                </div>
+               -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <div class="section-title">Contact</div>
+            <div class="section-pill">Bookings · Press · General</div>
+          </div>
+          <p class="section-description">
+          </p>
+        </div>
+
+        <div class="contact-card">
+          <div class="field-label">Email</div>
+          <div class="field-value">
+            <a href="mailto:Jameswills86@hotmail.com">Jameswills86@hotmail.com</a>
+          </div>
+
+          <div class="contact-row">
+            <div class="contact-field">
+              <div class="field-label">Bookings & live</div>
+              <div class="field-value">Use the subject line “Booking enquiry”</div>
+            </div>
+            <div class="contact-field">
+              <div class="field-label">Press & media</div>
+              <div class="field-value">Use the subject line “Press / media”</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div>© <span id="year"></span> Country Jai. All rights reserved.</div>
+        <div class="footer-links">
+          <span>Site by Country Jai.</span>
+          <a href="https://instagram.com/countryjai.music" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://open.spotify.com/artist/0Q6l1XoiiMOu9s3RCmmFXI?si=qX8gCTOLR_WvUp58iqBwOQ" target="_blank" rel="noopener">Spotify</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  // Set current year in footer
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+</body>
+   <!-- force rebuild -->
+</html>
